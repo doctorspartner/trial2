@@ -1,0 +1,101 @@
+<%= simple_form_for(@contact) do |f| %>
+  <% if @contact.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@contact.errors.count, "error") %> prohibited this contact from being saved:</h2>
+
+      <ul>
+      <% @contact.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<div class='row'>
+	<div class='span3'>
+		<%= f.input :first_name %>
+	</div>
+	
+	<div class='span3'>
+		<%= f.input :last_name %>
+	</div>
+	
+	<div class='span3'>
+		<%= f.input :title %>
+	</div>
+		
+	<div class='span3'>
+		<%= f.input :tags %>
+	</div>
+</div>
+
+<div class='row'>
+	<div class='span3'>
+		<%= f.input :assigned_to %>
+	</div>
+	
+	<div class='span3'>
+		<%= f.input :email %>
+	</div>
+	
+	<div class='span3'>
+		<%= f.input :phone %>
+	</div>
+		
+	<div class='span3'>
+		<%= f.input :mobile_phone %>
+	</div>
+</div>
+
+<div class='row'>
+	<div class='span3'>
+		<%= f.input :fax %>
+	</div>
+	
+	<div class='span3'>
+		<%= f.input :address1 %>
+	</div>
+	
+	<div class='span3'>
+		<%= f.input :address2 %>
+	</div>
+		
+	<div class='span3'>
+		<%= f.input :city %>
+	</div>
+</div>
+
+<div class='row'>
+	<div class='span3'>
+		<%= f.input :state %>
+	</div>
+	
+	<div class='span3'>
+		<%= f.input :zip %>
+	</div>
+	
+	<div class='span3'>
+		<%= f.input :support_package %>
+	</div>
+		
+	<div class='span3'>
+		
+	</div>
+</div>
+
+<div class='row'>
+	<div class='span6'>
+		<%= f.input :comments %>
+	</div>
+	
+	<div class='span3'>
+		<%= f.input :company_id %>
+	</div>
+	
+</div>
+
+    
+<div class="actions">
+    <%= f.button :submit, :class => 'btn btn-primary' %>
+</div>
+<% end %>

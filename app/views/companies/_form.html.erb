@@ -1,0 +1,102 @@
+<%= simple_form_for(@company) do |f| %>
+  
+  
+ <div class = 'row'>
+	<div class = 'span3'>
+		<%= f.input :company_name %>
+	</div>
+	<div class = 'span3'>
+		<%= f.input :tags %>
+	</div>
+	<div class = 'span3'>
+		<%= f.input :assigned_to %>
+	</div>
+	<div class = 'span3'>
+		<%= f.input :email %>
+	</div>
+</div>
+
+<div class = 'row'>
+	<div class = 'span3'>
+		<%= f.input :phone %>
+	</div>
+	<div class = 'span3'>
+		<%= f.input :mobile_phone %>
+	</div>
+	<div class = 'span3'>
+		<%= f.input :fax %>
+	</div>
+	<div class = 'span3'>
+		<%= f.input :address1 %>
+	</div>	
+</div>
+<div class = 'row'>
+	<div class = 'span3'>
+		<%= f.input :address2 %>
+	</div>
+	<div class = 'span3'>
+		<%= f.input :city %>
+	</div>
+	<div class = 'span3'>
+		<%= f.input :state %>
+	</div>
+	<div class = 'span3'>
+		<%= f.input :zip %>
+	</div>
+</div>
+
+<div class = 'row'>
+	<div class = 'span3'>
+		<%= f.input :support_package %>
+	</div>
+	
+	<div class = 'span6'>
+		<%= f.input :comments, :as => :text, :input_html => { :rows => 7 , :style => 'width: 90%'} %>
+	</div>
+</div>
+
+<%= f.button :submit, :class => 'btn btn-primary' %>
+<%end%>
+
+<script>
+	$(document).ready(function(){
+		$("#company_phone").keydown(function(e){
+		if (e.keyCode != 46 && e.keyCode != 8){
+		    var company_val = $('#company_phone').val()
+		    if(company_val.length==3){
+		    $('#company_phone').val(company_val + '-')
+		    }
+		    if(company_val.length==7){
+		    $('#company_phone').val(company_val + '-')
+		    }}
+
+		
+		})
+		
+			$('input[name = commit]').click(function(){
+			var msg = '';
+			var company_name = $('#company_company_name').val();
+			if( company_name == null || company_name == '' || company_name == undefined)
+			{
+			    msg += 'Company name required\n';
+			    
+			}
+			var company_phone = $('#company_phone').val();
+			
+			if( company_phone == null || company_phone == '' || company_phone == undefined)
+			{
+			    msg += 'Company phone required';
+			    
+			}
+			if(msg.length > 0){
+			    alert(msg);
+			    return false;
+			}
+			
+			
+			})
+					
+		})
+	
+	
+</script>

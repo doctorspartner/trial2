@@ -1,0 +1,48 @@
+<h1>List of Companies</h1>
+
+<div class='row'>
+	
+	<div class = 'span2'>
+		<b>Company name</b>
+	</div>
+	
+	<div class = 'span2'>
+		<b>Email</b>
+	</div>
+	
+	<div class = 'span2'>
+		<b>Phone</b>
+	</div>
+	
+	<div class = 'span4'>
+		
+	</div>
+	
+</div>
+</br>
+<% @companies.each do |company| %>
+<div class='row'>
+	
+	<div class = 'span2'>
+		<uline><%= link_to company.company_name, company_path(company) %></uline>
+	</div>
+	
+	<div class = 'span2'>
+		<%= company.email %>
+	</div>
+	
+	<div class = 'span2'>
+		 <%= company.phone %>
+	</div>
+	
+	<div class = 'span4'>
+		<td><%= link_to 'Open', company, :class => 'btn btn-mini btn-primary'%></td> </br>
+        </br>
+	</div>
+	
+</div>
+<%end%>
+
+<br>
+
+<%= link_to 'New Company', new_company_path, :class => 'btn btn-primary' %>

@@ -1,0 +1,15 @@
+<%= simple_form_for @note, :url => contact_notes_path(@contact, @note), :method => :post do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :note %>
+    <!-- <%= f.association :contact, :collection => Contact.all.order("last_name"), :label_method => lambda {|r| "#{r.last_name},  #{r.first_name}"}, :input_html => { :value => params[:contact_id]}  %> -->
+    <%= text_field_tag :contact_name, @contact.last_name + ", " + @contact.first_name, :readonly => true %>
+    <%= f.input :contact_id, :as => 'hidden', :input_html => {:value =>@contact.id} %>
+    <%= f.input :user_id, :as => 'hidden', :input_html => {:value =>current_user.id} %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, :class => 'btn btn-primary' %>
+  </div>
+<% end %>

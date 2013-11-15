@@ -1,0 +1,64 @@
+<h1>Listing contacts</h1>
+
+<div class='row'>
+	
+	<div class = 'span2'>
+		<b>Last Name</b>
+	</div>
+	
+	<div class = 'span2'>
+		<b>First Name</b>
+	</div>
+	
+	<div class = 'span2'>
+		<b>Email</b>
+	</div>
+	
+	<div class = 'span2'>
+		<b>Phone</b>
+	</div>
+	
+	<div class = 'span3'>
+		
+	</div>
+	
+</div>
+
+</br>
+
+<%@contacts.each do |contact|%>
+
+<div class='row'>
+	
+	<div class = 'span2'>
+		<td><%= link_to contact.last_name, contact_path(contact) %></td>
+	</div>
+	
+	<div class = 'span2'>
+		<td><%= contact.first_name %></td>
+	</div>
+	
+	<div class = 'span2'>
+		<td><%= contact.email %></td>
+	</div>
+	
+	<div class = 'span2'>
+		<td><%= contact.phone %></td>
+	</div>
+	
+	<div class = 'span3'>
+		
+	</div>
+	
+</div>
+</br>
+
+<%end%>
+
+<br>
+
+<%if params[:company_id]%>
+	<%= link_to 'New Contact', new_company_contact_path, :class => 'btn btn-mini btn-primary' %>
+<%else%>
+	<%= link_to 'New Contact', new_contact_path, :class => 'btn btn-mini btn-primary' %>
+<%end%>

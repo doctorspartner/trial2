@@ -1,0 +1,125 @@
+<h1>Company Details</h1>
+
+</br>
+
+<div class = 'row'>
+	<div class='span9'>
+		<div class = 'row'>
+			<div class = 'span2'>
+				<strong>Company name:</strong></br>
+		  		<%= @company.company_name %>
+			</div>
+			<div class = 'span2'>
+				<strong>Tags:</strong></br>
+		  		<%= @company.tags %>
+			</div>
+			<div class = 'span2'>
+				<strong>Assigned to:</strong></br>
+		  		<%= @company.assigned_to %>
+			</div>
+			<div class = 'span2'>
+				<strong>Email:</strong></br>
+		  		<%= @company.email %>
+			</div>
+		</div>
+		
+		</br>
+		
+		<div class = 'row'>
+			<div class = 'span2'>
+				<strong>Phone:</strong></br>
+		  		<%= @company.phone %>
+			</div>
+			<div class = 'span2'>
+				<strong>Mobile phone:</strong></br>
+		  		<%= @company.mobile_phone %>
+			</div>
+			<div class = 'span2'>
+				<strong>Fax:</strong></br>
+		  		<%= @company.fax %>
+			</div>
+			<div class = 'span2'>
+				<strong>Address1:</strong></br>
+		  		<%= @company.address1 %>
+			</div>
+		</div>
+		
+		</br>
+		
+		<div class = 'row'>
+			<div class = 'span2'>
+				<strong>Address2:</strong></br>
+		  		<%= @company.address2 %>
+			</div>
+			<div class = 'span2'>
+				<strong>City:</strong></br>
+		  		<%= @company.city %>
+			</div>
+			<div class = 'span2'>
+				<strong>State:</strong></br>
+		  		<%= @company.state %>
+			</div>
+			<div class = 'span2'>
+				<strong>Zip:</strong></br>
+		  		<%= @company.zip %>
+			</div>
+		</div>
+		
+		</br>
+		
+		<div class = 'row'>
+			<div class = 'span2'>
+				<strong>Support package:</strong></br>
+		  		<%= @company.support_package %>
+			</div>
+			
+			<div class = 'span6'>
+				<strong>Comments:</strong></br>
+		  		<%= @company.comments %>
+			</div>
+		</div>
+	</div>
+	
+	<div class='span2 contacts'>
+		<ul>
+			<h4>Contacts</h4>
+			<%@contacts.each do |contact|%>				
+					<%fullName = contact.last_name + ", " + contact.first_name%>
+					<li><%=link_to fullName, company_contact_path(@company, contact)%> </br></li>				
+			<%end%>
+		</ul>
+	</div>
+
+</div>
+
+</br>
+<style>
+.row{
+	zoom; 1;
+	margin-left : -20px;
+}
+
+.row > [class*="contacts"]{
+	display :inline;
+	float :left;
+	margin-leftt : 20px;
+
+}
+
+.span2.contacts{
+	width : 220px;
+	border : 1px solid #ccc;
+	padding-left : 20px;
+
+}
+
+
+</style>
+
+
+<%= link_to '<<Back', companies_path, :class => 'btn btn-mini btn-primary' %> | 
+<%= link_to 'Edit', edit_company_path(@company), :class => 'btn btn-mini btn-primary' %> | 
+<%= link_to 'Delete', company_path(@company), method: :delete, data: { confirm: 'Are you sure?' }, :class => 'btn btn-mini btn-primary' %> |
+<%=link_to 'Add a Contact', new_company_contact_path(@company), :class => 'btn btn-mini btn-primary'%>
+
+

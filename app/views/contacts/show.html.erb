@@ -1,0 +1,93 @@
+<!-- <p id="notice"><%= notice %></p> -->
+
+
+<div class='row'>
+   
+    <div class = 'span8'>
+       
+       <h1><small>Notes</small></h1>
+       
+     	<%@contact.notes.order('updated_at desc').each do |n|%>
+     		<p><%=n.note%></br>
+     		<small><%=n.updated_at.localtime%></small>
+     			<%if not n.user_id.nil?%>
+     				<small>| <%=User.find(n.user_id).email.split('@')[0]%></small>
+     			<%end%>
+     		</p>
+     	<%end%>
+     	
+       	<%=link_to "Add a Note", new_contact_note_path(@contact)%>
+       
+    </div>
+   
+    <div class = 'span4 contact_info'>
+       
+        <strong><%= @contact.title + ". "+ @contact.first_name + ' ' + @contact.last_name %></strong> </br>
+        <strong><small>Tags:</small></strong></br>
+          <%= @contact.tags %></br>
+         
+          <strong><small>Assigned to:</small></strong></br>
+          <%= @contact.assigned_to %></br>
+   
+        <strong><small>Email:</small></strong></br>
+          <%= @contact.email %></br>
+   
+        <strong><small>Phone:</small></strong></br>
+          <%= @contact.phone %></br>
+   
+        <strong><small>Mobile phone:</small></strong></br>
+          <%= @contact.mobile_phone %></br>
+         
+          <strong><small>Fax:</small></strong></br>
+          <%= @contact.fax %></br>
+   
+        <strong><small>Address:</small></strong></br>
+          <%= @contact.address1 %></br>
+          <%= @contact.address2 %></br>
+        <%= @contact.city  + ", " + @contact.state + " " + @contact.zip%></br>
+       
+        <strong><small>Support package:</small></strong></br>
+          <%= @contact.support_package %></br>
+   
+        <strong><small>Company:</small></strong></br>
+          <%= @contact.company_id %></br>
+         
+          <strong><small>Comments:</small></strong></br>
+          <%= @contact.comments %></br>
+         
+    </div>
+   
+    <style>
+.row{
+    zoom; 1;
+    margin-left : -20px;
+}
+
+.row > [class*="contact_info"]{
+    display :inline;
+    float :left;
+    margin-leftt : 20px;
+
+}
+
+.span4.contact_info{
+    width : 220px;
+    border : 1px solid #ccc;
+    padding-left : 20px;
+
+}
+
+
+</style>
+   
+</div>
+   
+
+</br>
+
+<%= link_to 'Edit', edit_contact_path(@contact), :class => 'btn btn-mini btn-primary' %> |
+<%if params[:company_id]%>
+	<%= link_to 'Back to Company Info', company_path(@company), :class => 'btn btn-mini btn-primary' %>
+<%else%>
+	<%= link_to 'Back to Contacts', contacts_path, :class => 'btn btn-mini btn-primary'%>
+<%end%>
